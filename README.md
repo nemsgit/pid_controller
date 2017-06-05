@@ -3,9 +3,27 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
-## Reflectio
+## Reflection
 The PID parameters were tuned manually through repeated experiments. An auto-tuning algorithm
-like twiddle would
+like twiddle would give finer result but I didn't get the time to implement it in the current version.
+The final PID values were set to be 0.085, 0, and 2.0, respectively. The car was able to successfully drive
+multiple laps around the track with an average speed of ~65 mph despite oscillating steering. The P, I, and D
+parameters play different roles in the dynamics. Concretely,
+* P generates a steering correction proportional to the cross track error (cte). The higher the P value, the
+larger and more responsive the correction is. However, a too large P would result in overshooting and oscillation
+in steering control.
+* D contributes a correction proportional to the changing rate of the cte. It helps 'damp' the overshooting caused
+by P. However, if D is overly large, it would induce too much damping and make the system hard to take prompt
+responses.
+* I plays an indispensable role if there is a drift in the system. It generates a control signal that is proportional
+to the accumulation of the cte over time. Since the simulator doesn't seem to have a drift issue. I kept I = 0 in all
+experiments.
+
+In addition to the PID values I also played with the throttle settings. I used two settings while driving,
+throttle_low = 0.5 and throttle_high = 0.9, respectively. When the absolute value of the steering angle is above
+certain threshold (steer_thre = 0.07 in this case), the throttle is set to the lower value (throttle_low); When the
+steering angle is below the threshold, the throttle is switched to throttle_high to maximize acceleration in the
+forward direction.
 
 ## Dependencies
 
