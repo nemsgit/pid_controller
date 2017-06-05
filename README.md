@@ -3,6 +3,10 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflectio
+The PID parameters were tuned manually through repeated experiments. An auto-tuning algorithm
+like twiddle would
+
 ## Dependencies
 
 * cmake >= 3.5
